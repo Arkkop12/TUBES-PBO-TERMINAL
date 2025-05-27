@@ -14,7 +14,6 @@ public class BookingController {
     }
 
     public void updateBooking(int bookingId) {
-        // Dummy contoh, biasanya menerima booking baru
         System.out.println("Update booking belum diimplementasikan.");
     }
 }

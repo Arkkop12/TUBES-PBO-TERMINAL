@@ -1,30 +1,16 @@
-package model;
+package service;
 
-import java.util.ArrayList;
-import java.util.List;
+import model.Admin;
+import model.MahasiswaDosen;
 
 public class LoginService {
-    private List<Admin> adminList = new ArrayList<>();
-    private List<MahasiswaDosen> userList = new ArrayList<>();
-
-    public LoginService() {
-        // Data dummy
-        adminList.add(new Admin(1, "Admin Satu", "admin@example.com"));
-        userList.add(new MahasiswaDosen(2, "Doni Mahasiswa", "doni@example.com", "mahasiswa"));
-        userList.add(new MahasiswaDosen(3, "Dedi Dosen", "dedi@example.com", "dosen"));
-    }
-
-    public Object login(String email) {
-        for (Admin a : adminList) {
-            if (a.email.equals(email)) {
-                return a;
-            }
+    public Object login(String username, String password) {
+        if (username.equals("admin") && password.equals("admin123")) {
+            return new Admin(0, "admin", "admin@example.com", "admin123");
+        } else if (username.equals("joko") && password.equals("hahah")) {
+            return new MahasiswaDosen(1, "joko", "awdaw@", "hahah");
+        } else {
+            return null;
         }
-        for (MahasiswaDosen u : userList) {
-            if (u.email.equals(email)) {
-                return u;
-            }
-        }
-        return null;
     }
 }

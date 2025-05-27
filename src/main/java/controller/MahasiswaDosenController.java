@@ -30,8 +30,8 @@ public class MahasiswaDosenController {
 
     public void requestBooking(Room room, LocalDate date, LocalTime start, LocalTime end) {
         Booking newBooking = new Booking(
-            bookingManager.getAllBookings().size() + 1,
-            user, room, date, start, end
+                bookingManager.getAllBookings().size() + 1,
+                user, room, date, start, end
         );
         bookingManager.submitBooking(newBooking);
     }

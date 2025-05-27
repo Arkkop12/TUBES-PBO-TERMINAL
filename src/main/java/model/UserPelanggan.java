@@ -2,26 +2,16 @@ package model;
 
 public abstract class UserPelanggan {
     protected int id;
-    protected String name;
+    protected String username;
     protected String email;
-    protected String role;
+    protected String password;
 
-    public UserPelanggan(int id, String name, String email, String role) {
+    public UserPelanggan(int id, String username, String email, String password) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
-        this.role = role;
+        this.password = password;
     }
 
-    public abstract void login();
-    public abstract void logout();
-    public abstract void requestBooking();
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getName() {
-        return name;
-    }
+    // getter dan setter
 }
