@@ -1,24 +1,56 @@
-// --- File: Database.java ---
-package storage;
+package Storage;
 
-import model.*;
+import model.Booking;
+import model.Room;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    public static List<Room> rooms = new ArrayList<>();
-    public static List<Booking> bookings = new ArrayList<>();
-    public static List<User> users = new ArrayList<>();
+    private List<Room> rooms;
+    private List<Booking> bookings;
 
-    static {
-        // Tambahkan data dummy (bisa dianggap sebagai data awal di "database")
-        rooms.add(new Room(1, "Lab Komputer 1", 30, "lab"));
-        rooms.add(new Room(2, "Ruang Kuliah A", 40, "kuliah"));
-        rooms.add(new Room(3, "Ruang Seminar", 50, "seminar"));
+    public Database() {
+        rooms = new ArrayList<>();
+        bookings = new ArrayList<>();
 
-        users.add(new Mahasiswa(1, "Budi", "budi@example.com", "12345"));
-        users.add(new Dosen(2, "Pak Andi", "andi@example.com", "12345"));
-        users.add(new Admin(3, "Admin Satu", "admin@example.com", "admin"));
+        // Data dummy ruangan
+        rooms.add(new Room("Lab A", "Lab Komputer", 30));
+        rooms.add(new Room("Lab B", "Lab Jaringan", 25));
+        rooms.add(new Room("Ruang 101", "Ruang Kelas", 40));
+
+        // Data dummy booking
+        bookings.add(new Booking(
+            1,
+            "doni@example.com",
+            rooms.get(0),
+            LocalDate.of(2025, 6, 1),
+            LocalTime.of(9, 0),
+            LocalTime.of(11, 0),
+            "pending"
+        ));
+        bookings.add(new Booking(
+            2,
+            "dedi@example.com",
+            rooms.get(1),
+            LocalDate.of(2025, 6, 2),
+            LocalTime.of(13, 0),
+            LocalTime.of(15, 0),
+            "approved"
+        ));
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
     }
 }
