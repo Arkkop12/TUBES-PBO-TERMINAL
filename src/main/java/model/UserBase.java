@@ -1,10 +1,10 @@
 package model;
 
 public abstract class UserBase {
-    protected int id;
-    protected String username;
-    protected String email;
-    protected String password;
+    public int id;
+    public String username;
+    public String email;
+    public String password;
 
     public UserBase(int id, String username, String email, String password) {
         this.id = id;
@@ -19,5 +19,9 @@ public abstract class UserBase {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

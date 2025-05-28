@@ -27,6 +27,6 @@ public class BookingManager {
     }
 
     public void notifyUser(Booking booking, String message) {
-        System.out.println("Notifikasi untuk " + booking.getUser().username + ": " + message);
+        System.out.println("Notifikasi untuk " + booking.getUser().getUsername() + ": " + message);
     }
 }
