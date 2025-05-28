@@ -1,6 +1,9 @@
 package controller;
 
 import model.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 public class AdminController {
     private Admin admin;
@@ -12,21 +15,41 @@ public class AdminController {
     }
 
     public void viewAllBookings() {
-        for (Booking booking : bookingManager.getAllBookings()) {
-            System.out.println(booking);
+        List<Booking> bookings = bookingManager.getAllBookings();
+        if (bookings.isEmpty()) {
+            System.out.println("Belum ada booking.");
+        } else {
+            System.out.println("\n=== Daftar Semua Booking ===");
+            for (Booking booking : bookings) {
+                System.out.println(booking);
+            }
         }
     }
 
     public void approveBooking(int bookingId) {
-        System.out.println("Booking " + bookingId + " disetujui.");
+        bookingManager.approveBooking(bookingId);
     }
 
     public void rejectBooking(int bookingId) {
-        System.out.println("Booking " + bookingId + " ditolak.");
+        bookingManager.rejectBooking(bookingId);
     }
 
     public void generateDashboard() {
-        System.out.println("Dashboard Statistik:");
-        System.out.println("Total Booking: " + bookingManager.getAllBookings().size());
+        long total = bookingManager.getAllBookings().size();
+        long approved = bookingManager.getAllBookings().stream().filter(Booking::isApproved).count();
+        long pending = bookingManager.getAllBookings().stream().filter(Booking::isPending).count();
+        long rejected = bookingManager.getAllBookings().stream().filter(Booking::isRejected).count();
+        long canceled = bookingManager.getAllBookings().stream().filter(Booking::isCancelled).count();
+
+        System.out.println("\n=== Dashboard Statistik ===");
+        System.out.println("Total Booking: " + total);
+        System.out.println("Disetujui: " + approved);
+        System.out.println("Pending: " + pending);
+        System.out.println("Ditolak: " + rejected);
+        System.out.println("Dibatalkan: " + canceled);
+    }
+
+    public void requestBooking(Room room, LocalDate date, LocalTime start, LocalTime end) {
+        bookingManager.requestBooking(admin, room, date, start, end);
     }
 }

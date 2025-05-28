@@ -88,9 +88,11 @@ public class MainApp {
                 System.out.println("2. Setujui Booking");
                 System.out.println("3. Tolak Booking");
                 System.out.println("4. Lihat Dashboard");
-                System.out.println("5. Logout");
+                System.out.println("5. Request Booking");
+                System.out.println("6. Logout");
                 System.out.print("Pilih menu: ");
                 int choice = scanner.nextInt();
+                scanner.nextLine();
 
                 switch (choice) {
                     case 1:
@@ -110,14 +112,33 @@ public class MainApp {
                         controller.generateDashboard();
                         break;
                     case 5:
+                        System.out.print("Masukkan ID Ruangan: ");
+                        int roomId = scanner.nextInt();
+                        scanner.nextLine();
+                        Room selectedRoom = db.getRooms().stream().filter(r -> r.getRoomId() == roomId).findFirst().orElse(null);
+                        if (selectedRoom == null) {
+                            System.out.println("Ruangan tidak ditemukan.");
+                            break;
+                        }
+                        System.out.print("Tanggal (YYYY-MM-DD): ");
+                        LocalDate date = LocalDate.parse(scanner.nextLine());
+                        System.out.print("Jam Mulai (HH:MM): ");
+                        LocalTime start = LocalTime.parse(scanner.nextLine());
+                        System.out.print("Jam Selesai (HH:MM): ");
+                        LocalTime end = LocalTime.parse(scanner.nextLine());
+                        controller.requestBooking(selectedRoom, date, start, end);
+                        break;
+                    case 6:
                         System.out.println("Logout...");
                         return;
                     default:
                         System.out.println("Pilihan tidak valid.");
                 }
             }
-        } else {
-            System.out.println("Role tidak dikenal.");
-        }
-    }
-}
+        }    }
+    }     
+   
+
+       
+    
+

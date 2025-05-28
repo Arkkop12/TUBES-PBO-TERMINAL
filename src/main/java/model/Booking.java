@@ -10,7 +10,7 @@ public class Booking {
     private LocalDate date;
     private LocalTime startTime;
     private LocalTime endTime;
-    private String status = "pending"; // default saat dibuat
+    private String status = "pending"; 
 
 
     public Booking(int bookingId, UserBase user, Room room, LocalDate date, LocalTime startTime, LocalTime endTime) {
@@ -64,6 +64,10 @@ public class Booking {
 
     public boolean isCancelled() {
     return "cancel".equalsIgnoreCase(status);
+}
+    
+    public boolean isPending() {
+    return "pending".equalsIgnoreCase(status);
 }
 
     public String toString() {
