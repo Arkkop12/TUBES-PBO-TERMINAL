@@ -1,17 +1,9 @@
 package model;
 
-public abstract class UserPelanggan {
-    protected int id;
-    protected String username;
-    protected String email;
-    protected String password;
-
+public abstract class UserPelanggan extends UserBase {
     public UserPelanggan(int id, String username, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        super(id, username, email, password);
     }
 
-    // getter dan setter
+    public abstract void addBookingToHistory(Booking booking);
 }

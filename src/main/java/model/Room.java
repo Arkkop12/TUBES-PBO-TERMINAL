@@ -1,24 +1,23 @@
 package model;
 
 public class Room {
-    private int id;
+    private int roomId;
     private String roomName;
-    private int capacity;
-    private String description;
-    private boolean available = true;
 
-    public Room(int id, String roomName, int capacity, String description) {
-        this.id = id;
+    public Room(int roomId, String roomName) {
+        this.roomId = roomId;
         this.roomName = roomName;
-        this.capacity = capacity;
-        this.description = description;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public int getRoomId() {
+        return roomId;
     }
 
     public String getRoomName() {
         return roomName;
+    }
+
+    public String toString() {
+        return roomId + ": " + roomName;
     }
 }

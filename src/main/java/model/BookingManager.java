@@ -11,7 +11,9 @@ public class BookingManager {
 
     public void submitBooking(Booking booking) {
         bookings.add(booking);
-        booking.getUser().addBookingToHistory(booking);
+        if (booking.getUser() instanceof UserPelanggan up) {
+            up.addBookingToHistory(booking);
+        }
         System.out.println("Booking berhasil diajukan.");
     }
 

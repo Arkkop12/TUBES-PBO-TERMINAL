@@ -10,6 +10,7 @@ public class MahasiswaDosen extends UserPelanggan {
         super(id, username, email, password);
     }
 
+    @Override
     public void addBookingToHistory(Booking booking) {
         bookingHistory.add(booking);
     }

@@ -1,9 +1,6 @@
 package controller;
 
-import model.Booking;
-import model.BookingManager;
-import model.MahasiswaDosen;
-import model.Room;
+import model.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,9 +15,10 @@ public class MahasiswaDosenController {
         this.bookingManager = bookingManager;
     }
 
-    public void checkAvailability(List<Room> roomList) {
-        for (Room r : roomList) {
-            System.out.println(r.getRoomName() + " tersedia: " + r.isAvailable());
+    public void checkAvailability(List<Room> rooms) {
+        System.out.println("Daftar Ruangan:");
+        for (Room room : rooms) {
+            System.out.println(room);
         }
     }
 
@@ -29,10 +27,8 @@ public class MahasiswaDosenController {
     }
 
     public void requestBooking(Room room, LocalDate date, LocalTime start, LocalTime end) {
-        Booking newBooking = new Booking(
-                bookingManager.getAllBookings().size() + 1,
-                user, room, date, start, end
-        );
-        bookingManager.submitBooking(newBooking);
+        int bookingId = bookingManager.getAllBookings().size() + 1;
+        Booking booking = new Booking(bookingId, user, room, date, start, end);
+        bookingManager.submitBooking(booking);
     }
 }
