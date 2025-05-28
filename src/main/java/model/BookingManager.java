@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class BookingManager {
@@ -18,9 +19,15 @@ public class BookingManager {
     }
 
     public void cancelBooking(int bookingId) {
-        bookings.removeIf(b -> b.getBookingId() == bookingId);
-        System.out.println("Booking berhasil dibatalkan.");
+    for (Booking b : bookings) {
+        if (b.getBookingId() == bookingId) {
+            b.setStatus("cancel");
+            System.out.println("Booking ID " + bookingId + " telah dibatalkan.");
+            return;
+        }
     }
+    System.out.println("Booking ID tidak ditemukan.");
+}
 
     public List<Booking> getAllBookings() {
         return bookings;

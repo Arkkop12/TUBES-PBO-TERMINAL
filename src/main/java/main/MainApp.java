@@ -38,7 +38,8 @@ public class MainApp {
                 System.out.println("1. Lihat Ruangan");
                 System.out.println("2. Request Booking");
                 System.out.println("3. Lihat Riwayat Booking");
-                System.out.println("4. Logout");
+                System.out.println("4. Batalkan Booking");
+                System.out.println("5. Logout");
                 System.out.print("Pilih menu: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // buang newline
@@ -68,6 +69,11 @@ public class MainApp {
                         controller.viewBookingHistory();
                         break;
                     case 4:
+                        System.out.print("Masukkan ID Booking yang ingin dibatalkan: ");
+                        int cancelId = scanner.nextInt();
+                        controller.cancelBooking(cancelId);
+                        break;
+                    case 5:
                         System.out.println("Logout...");
                         return;
                     default:

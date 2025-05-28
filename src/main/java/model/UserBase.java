@@ -24,4 +24,14 @@ public abstract class UserBase {
     public String getUsername() {
         return username;
     }
+
+    public int getId() {
+        return id;
+    }
+    
+    @Override
+    public String toString() {
+    return username;
+}
+
 }

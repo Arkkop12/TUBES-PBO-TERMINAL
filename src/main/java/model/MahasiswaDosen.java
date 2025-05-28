@@ -21,4 +21,8 @@ public class MahasiswaDosen extends UserPelanggan {
             System.out.println(b);
         }
     }
+
+    public List<Booking> getBookingHistory() {
+        return bookingHistory;
+    }
 }
