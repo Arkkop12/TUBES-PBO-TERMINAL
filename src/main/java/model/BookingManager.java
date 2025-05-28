@@ -32,7 +32,7 @@ public class BookingManager {
     
     public void requestBooking(UserBase user, Room room, LocalDate date, LocalTime startTime, LocalTime endTime) {
         int bookingId = bookings.size() + 1; // Generate ID sederhana
-        Booking booking = new Booking(bookingId, user, room, date, startTime, endTime);
+        Booking booking = new Booking(user, room, date, startTime, endTime);
         bookings.add(booking);
 
     // Tambahkan ke histori jika user adalah pelanggan

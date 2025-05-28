@@ -59,8 +59,7 @@ public class MahasiswaDosenController {
 }
 
     public void requestBooking(Room room, LocalDate date, LocalTime start, LocalTime end) {
-        int bookingId = bookingManager.getAllBookings().size() + 1;
-        Booking booking = new Booking(bookingId, user, room, date, start, end);
+        Booking booking = new Booking(user, room, date, start, end);
         bookingManager.submitBooking(booking);
     }
 
