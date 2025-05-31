@@ -46,7 +46,7 @@ public class MainApp {
 
                 switch (choice) {
                     case 1:
-                        controller.checkAvailability(db.getRooms());
+                        RoomController.lihatRuanganDanJadwal(db.getRooms(), bookingManager, scanner);
                         break;
                     case 2:
                         System.out.print("Masukkan ID Ruangan: ");

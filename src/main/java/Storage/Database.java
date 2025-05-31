@@ -11,10 +11,20 @@ public class Database {
     private List<Booking> bookings = new ArrayList<>();
 
     public Database() {
-        users.add(new MahasiswaDosen(1, "Budi", "budi@email.com", "1234"));
-        users.add(new Admin(2, "Admin", "admin@email.com", "admin"));
-        rooms.add(new Room(1, "Ruang Kelas A"));
-        rooms.add(new Room(2, "Laboratorium B"));
+        // Tambahkan beberapa User
+        users.add(new Admin(1, "admin1", "admin@gmail.com", "admin123"));
+        users.add(new MahasiswaDosen(2, "Arka", "arkkop@gmail.com", "123"));
+        users.add(new MahasiswaDosen(3, "Nira", "nira@gmail.com", "123"));
+        users.add(new MahasiswaDosen(4, "khansa", "sasa@gmail.com", "123"));
+        users.add(new MahasiswaDosen(5, "henri", "sadler@gmail.com", "123"));
+
+        // Tambahkan beberapa Room
+        rooms.add(new Room(1, "Ruang Kelas 1"));
+        rooms.add(new Room(2, "Lab Komputer 1"));
+        rooms.add(new Room(3, "Lab Fisika"));
+        rooms.add(new Room(4, "Ruang Rapat"));
+
+        // Tidak perlu isi booking awal, akan diisi saat runtime
     }
 
     public List<UserBase> getAllUsers() {

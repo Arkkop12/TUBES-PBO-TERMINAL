@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Room {
     private int roomId;
     private String roomName;
@@ -20,4 +22,5 @@ public class Room {
     public String toString() {
         return "ID :" + roomId + " - " + roomName;
     }
+
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public abstract class UserBase {
     public int id;
     public String username;
@@ -32,6 +34,6 @@ public abstract class UserBase {
     @Override
     public String toString() {
     return username;
-}
+    }
 
 }

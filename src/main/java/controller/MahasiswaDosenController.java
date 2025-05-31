@@ -16,13 +16,6 @@ public class MahasiswaDosenController {
         this.bookingManager = bookingManager;
     }
 
-    public void checkAvailability(List<Room> rooms) {
-        System.out.println("Daftar Ruangan:");
-        for (Room room : rooms) {
-            System.out.println(room);
-        }
-    }
-
     public void viewBookingHistory() {
     System.out.println("=== Riwayat Booking Anda ===");
     boolean found = false;

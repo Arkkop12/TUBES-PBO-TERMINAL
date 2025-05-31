@@ -39,26 +39,25 @@ public class BookingManager {
     }
 
     for (Booking b : bookings) {
-        // ✅ Cek: user sudah booking ruangan yang sama pada tanggal tersebut
-        if (b.getUser().equals(user) &&
-            b.getRoom().equals(room) &&
-            b.getDate().equals(date) &&
-            !b.isCancelled()) {
-            System.out.println("Anda sudah membooking ruangan ini pada tanggal tersebut.");
-            return;
-        }
-
-        // ✅ Cek: waktu bentrok (overlap) di ruangan yang sama dan tanggal yang sama
-        if (b.getRoom().equals(room) &&
-            b.getDate().equals(date) &&
-            !b.isCancelled() &&
-            !(endTime.isBefore(b.getStartTime()) || startTime.isAfter(b.getEndTime()))) {
-            System.out.println("Waktu yang Anda pilih bertabrakan dengan booking lain.");
-            System.out.println("Ruangan ini sudah dibooking dari " + b.getStartTime() + " hingga " + b.getEndTime());
-            return;
-        }
+    // Cek user sudah booking ruangan yang sama pada tanggal yang sama
+    if (b.getUser().equals(user) &&
+        b.getRoom().equals(room) &&
+        b.getDate().equals(date) &&
+        !b.isCancelled()) {
+        System.out.println("Anda sudah membooking ruangan ini pada tanggal tersebut.");
+        return;
     }
 
+    // Cek waktu bertabrakan
+    if (b.getRoom().equals(room) &&
+        b.getDate().equals(date) &&
+        !b.isCancelled() &&
+        !(endTime.isBefore(b.getStartTime()) || startTime.isAfter(b.getEndTime()))) {
+        System.out.println("Waktu yang Anda pilih bertabrakan dengan booking lain.");
+        System.out.println("Ruangan ini sudah dibooking dari " + b.getStartTime() + " hingga " + b.getEndTime());
+        return;
+    }
+}
     // Buat booking baru
     Booking booking = new Booking(user, room, date, startTime, endTime);
     bookings.add(booking);
@@ -69,7 +68,6 @@ public class BookingManager {
 
     System.out.println("Booking berhasil dibuat dan menunggu persetujuan.");
 }
-
 
     
     public void approveBooking(int bookingId) {
