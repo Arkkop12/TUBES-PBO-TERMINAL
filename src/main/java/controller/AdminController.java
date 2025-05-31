@@ -48,6 +48,14 @@ public class AdminController {
         System.out.println("Ditolak: " + rejected);
         System.out.println("Dibatalkan: " + canceled);
     }
+    
+    public void viewRooms(List<Room> rooms) {
+    System.out.println("\n=== Daftar Ruangan ===");
+    for (Room room : rooms) {
+        System.out.println(room);
+    }
+}
+
 
     public void requestBooking(Room room, LocalDate date, LocalTime start, LocalTime end) {
         bookingManager.requestBooking(admin, room, date, start, end);

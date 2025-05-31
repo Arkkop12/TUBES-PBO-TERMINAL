@@ -75,11 +75,15 @@ public class Booking {
 }
 
     // toString() untuk menampilkan informasi booking
+    @Override
     public String toString() {
-        return "ID: " + bookingId + ", User: " + user.getUsername() +
-               ", Ruangan: " + room.getRoomName() +
-               ", Tanggal: " + date +
-               ", Jam: " + startTime + " - " + endTime +
-               ", Status: " + status;
-    }
+        return "ID: " + bookingId
+            + ", User: " + user.getUsername()  // ini penting agar terlihat siapa pemilik booking
+            + ", Role: " + user.getClass().getSimpleName()
+            + ", Ruangan: " + room.getRoomName()
+            + ", Tanggal: " + date
+            + ", Jam: " + startTime + " - " + endTime
+            + ", Status: " + status;
+}
+
 }

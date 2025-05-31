@@ -18,6 +18,6 @@ public class Room {
     }
 
     public String toString() {
-        return roomId + ": " + roomName;
+        return "ID :" + roomId + " - " + roomName;
     }
 }

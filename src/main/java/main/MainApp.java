@@ -84,34 +84,38 @@ public class MainApp {
             AdminController controller = new AdminController(admin, bookingManager);
             while (true) {
                 System.out.println("\n=== Menu Admin ===");
-                System.out.println("1. Lihat Semua Booking");
-                System.out.println("2. Setujui Booking");
-                System.out.println("3. Tolak Booking");
-                System.out.println("4. Lihat Dashboard");
-                System.out.println("5. Request Booking");
-                System.out.println("6. Logout");
+                System.out.println("1. Lihat Ruangan");
+                System.out.println("2. Lihat Semua Booking");
+                System.out.println("3. Setujui Booking");
+                System.out.println("4. Tolak Booking");
+                System.out.println("5. Lihat Dashboard");
+                System.out.println("6. Request Booking");
+                System.out.println("7. Logout");
                 System.out.print("Pilih menu: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
                 switch (choice) {
                     case 1:
+                     controller.viewRooms(db.getRooms());
+                        break;   
+                    case 2:
                         controller.viewAllBookings();
                         break;
-                    case 2:
+                    case 3:
                         System.out.print("Masukkan ID Booking: ");
                         int idApprove = scanner.nextInt();
                         controller.approveBooking(idApprove);
                         break;
-                    case 3:
+                    case 4:
                         System.out.print("Masukkan ID Booking: ");
                         int idReject = scanner.nextInt();
                         controller.rejectBooking(idReject);
                         break;
-                    case 4:
+                    case 5:
                         controller.generateDashboard();
                         break;
-                    case 5:
+                    case 6:
                         System.out.print("Masukkan ID Ruangan: ");
                         int roomId = scanner.nextInt();
                         scanner.nextLine();
@@ -128,7 +132,7 @@ public class MainApp {
                         LocalTime end = LocalTime.parse(scanner.nextLine());
                         controller.requestBooking(selectedRoom, date, start, end);
                         break;
-                    case 6:
+                    case 7:
                         System.out.println("Logout...");
                         return;
                     default:
